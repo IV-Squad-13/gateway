@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway
+  config:
+    import: optional:.env.properties
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              lower-case-service-id: true
+              enabled: true
+
+server:
+  port: ${SERVER_PORT:13000}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_HOST:http://localhost:12999/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
